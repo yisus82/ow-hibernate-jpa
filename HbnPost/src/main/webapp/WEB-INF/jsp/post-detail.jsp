@@ -30,10 +30,16 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
+	<div class="container-fluid">
+		<nav class="navbar navbar-dark bg-primary">
+			<a class="navbar-brand" href="/">HbnPost</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
 					<c:choose>
 						<c:when test="${not empty sessionScope.userLoggedIn}">
 							<jsp:include page="includes/menu-logged.jsp" flush="true">
@@ -48,19 +54,16 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
-			<h3 class="text-muted">HbnPost</h3>
-		</div>
+			</div>
+		</nav>
 
 		<div class="row">
 			<div class="col-md-12 col-lg-12">
 				<h1>${post.title}</h1>
 				<div>
-					<div class="pull-right" style="padding: 10px 0 0 5px;">${post.author.name}</div>
 					<img alt="User's avatar"
 						src="http://i.pravatar.cc/50?u=${post.author.email}"
-						class="img-circle img-responsive pull-right">
-					<p></p>
+						class="img-circle img-responsive pull-right"> <span>${post.author.name}</span>
 				</div>
 				<div style="clear: both; margin-bottom: 10px;"></div>
 				<p>${post.content}</p>
@@ -89,7 +92,7 @@
 										class="form-control input-sm chat-input"
 										placeholder="Insert your comment..." path="content"
 										required="required" />
-									<span class="input-group-btn" id="comment-button">
+									<span class="ml-3 input-group-btn" id="comment-button">
 										<button type="submit" class="btn btn-primary btn-sm">
 											Comment</button>
 									</span>

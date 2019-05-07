@@ -22,9 +22,7 @@
 	rel="stylesheet">
 <link href="<c:url value="/assets/css/post-form.css" />"
 	rel="stylesheet">
-<link
-	href="<c:url value="/assets/wysiwyg/bootstrap3-wysihtml5.min.css" />"
-	rel="stylesheet">
+
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -34,10 +32,16 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
+	<div class="container-fluid">
+		<nav class="navbar navbar-dark bg-primary">
+			<a class="navbar-brand" href="/">HbnPost</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
 					<c:choose>
 						<c:when test="${not empty sessionScope.userLoggedIn}">
 							<jsp:include page="includes/menu-logged.jsp" flush="true">
@@ -52,57 +56,58 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
-			<h3 class="text-muted">HbnPost</h3>
-		</div>
+			</div>
+		</nav>
 
 		<div class="row">
-			<form:form method="POST" modelAttribute="post"
-				action="/posts" role="form" id="contact-form"
-				class="contact-form">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<form:input type="text" class="form-control" name="title"
-								id="title" placeholder="Title" path="title" required="required"
-						autofocus="autofocus"/>
+			<div class="mx-auto col-sm-10 col-md-6">
+				<form:form method="POST" modelAttribute="post" action="/posts"
+					role="form" id="contact-form" class="contact-form">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<form:input type="text" class="form-control" name="title"
+									id="title" placeholder="Title" path="title" required="required"
+									autofocus="autofocus" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<form:input type="url" class="form-control" name="url" id="url"
+									placeholder="URL (optional)" path="url" />
+							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<form:input type="url" class="form-control" name="url" id="url"
-								placeholder="URL (optional)" path="url" />
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<form:textarea class="form-control textarea" rows="3"
+									name="text" id="text" placeholder="Content" path="content"></form:textarea>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="form-group">
-							<form:textarea class="form-control textarea" rows="3" name="text"
-								id="text" placeholder="Content" path="content" required="required" ></form:textarea>
+					<div class="row">
+						<div class="col-md-12 mb-5">
+							<button type="submit" class="btn main-btn pull-right">Create
+								post</button>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<button type="submit" class="btn main-btn pull-right">Create
-							post</button>
-					</div>
-				</div>
-			</form:form>
+				</form:form>
+			</div>
 		</div>
 
-		<footer class="footer">&copy; 2019 - Jesús Ángel Pérez-Roca Fernández (jprf.liceo@gmail.com)</footer>
+		<footer class="footer">&copy; 2019 - Jesús Ángel Pérez-Roca
+			Fernández (jprf.liceo@gmail.com)</footer>
 	</div>
 
 	<!-- /container -->
 	<script src="webjars/jquery/3.4.0/jquery.min.js"></script>
 	<script src="webjars/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<c:url value="/assets/wysiwyg/bootstrap3-wysihtml5.all.min.js" />"></script>
+		src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/ckeditor.js"></script>
 	<script>
-		$(document).ready(function() {
-			$("#texto").wysihtml5();
+		$(function() {
+			ClassicEditor.create(document.querySelector('#text'))
 		});
 	</script>
 </body>

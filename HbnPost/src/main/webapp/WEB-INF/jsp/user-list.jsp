@@ -31,10 +31,16 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
+	<div class="container-fluid">
+		<nav class="navbar navbar-dark bg-primary">
+			<a class="navbar-brand" href="/">HbnPost</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
 					<c:choose>
 						<c:when test="${not empty sessionScope.userLoggedIn}">
 							<jsp:include page="includes/menu-logged.jsp" flush="true">
@@ -49,9 +55,8 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
-			<h3 class="text-muted">HbnPost</h3>
-		</div>
+			</div>
+		</nav>
 
 		<c:forEach items="${authors}" var="author">
 			<div class="row">

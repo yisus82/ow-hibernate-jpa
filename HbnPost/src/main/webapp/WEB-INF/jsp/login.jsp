@@ -30,10 +30,16 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
+	<div class="container-fluid">
+		<nav class="navbar navbar-dark bg-primary">
+			<a class="navbar-brand" href="/">HbnPost</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
 					<c:choose>
 						<c:when test="${not empty sessionScope.userLoggedIn}">
 							<jsp:include page="includes/menu-logged.jsp" flush="true">
@@ -48,26 +54,25 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
-			<h3 class="text-muted">HbnPost</h3>
-		</div>
+			</div>
+		</nav>
 
 		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3">
+			<div class="mx-auto col-sm-10 col-md-6">
 				<form:form class="form-signin" method="POST" action="/login"
 					modelAttribute="userLogin">
 					<h2 class="form-signin-heading">Login form</h2>
-					<div class="form-group">
+					<div class="form-group row">
 						<form:input type="email" id="inputEmail" class="form-control"
 							placeholder="Email" path="email" required="required"
 							autofocus="autofocus" />
 					</div>
-					<div class="form-group">
+					<div class="form-group row">
 						<form:input type="password" id="inputPassword"
 							class="form-control" placeholder="Password" path="password"
 							required="required" />
 					</div>
-					<div class="form-group">
+					<div class="form-group row">
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 					</div>
 				</form:form>

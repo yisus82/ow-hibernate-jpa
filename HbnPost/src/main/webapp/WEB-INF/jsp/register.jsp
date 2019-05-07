@@ -29,10 +29,16 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
+	<div class="container-fluid">
+		<nav class="navbar navbar-dark bg-primary">
+			<a class="navbar-brand" href="/">HbnPost</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
 					<c:choose>
 						<c:when test="${not empty sessionScope.userLoggedIn}">
 							<jsp:include page="includes/menu-logged.jsp" flush="true">
@@ -47,11 +53,10 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
-			<h3 class="text-muted">HbnPost</h3>
-		</div>
+			</div>
+		</nav>
 
-		<div class="col-lg-8 col-lg-offset-2">
+		<div class="mx-auto col-sm-10 col-md-6">
 			<div class="text-center">
 				<h3>
 					<b>Register</b>
@@ -59,32 +64,32 @@
 			</div>
 			<form:form id="register-form" action="/register" method="post"
 				modelAttribute="userRegister" role="form">
-				<div class="form-group">
+				<div class="form-group row">
 					<form:input type="text" name="name" id="name" tabindex="1"
 						class="form-control" placeholder="Name" path="name"
 						required="required" />
 				</div>
-				<div class="form-group">
+				<div class="form-group row">
 					<form:input type="text" name="city" id="city" tabindex="2"
 						class="form-control" placeholder="City, Country" path="city"
 						required="required" />
 				</div>
-				<div class="form-group">
+				<div class="form-group row">
 					<form:input type="email" name="email" id="email" tabindex="4"
 						class="form-control" placeholder="Email" path="email"
 						required="required" />
 				</div>
-				<div class="form-group">
+				<div class="form-group row">
 					<form:input type="password" name="password" id="password"
 						tabindex="5" class="form-control" placeholder="Password"
 						path="password" required="required" />
 				</div>
-				<div class="form-group">
+				<div class="form-group row">
 					<input type="password" name="confirm-password"
 						id="confirm-password" tabindex="6" class="form-control"
 						placeholder="Confirm Password" data-rule-equalTo="#password">
 				</div>
-				<div class="form-group">
+				<div class="form-group row">
 					<input type="submit" name="register-submit" id="register-submit"
 						tabindex="9"
 						class="form-control btn btn-primary"

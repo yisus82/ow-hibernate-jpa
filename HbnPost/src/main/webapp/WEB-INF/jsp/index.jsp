@@ -33,10 +33,19 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
+	<div class="container-fluid">
+		<nav class="navbar navbar-dark bg-primary">
+			<a class="navbar-brand" href="/">HbnPost</a>
+			<c:if test="${not empty sessionScope.userLoggedIn}">
+				<span class="navbar-text"> ${sessionScope.userLoggedIn.name}</span>
+			</c:if>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
 					<c:choose>
 						<c:when test="${not empty sessionScope.userLoggedIn}">
 							<jsp:include page="includes/menu-logged.jsp" flush="true">
@@ -51,9 +60,8 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
-			<h3 class="text-muted">HbnPost</h3>
-		</div>
+			</div>
+		</nav>
 
 		<div class="jumbotron">
 			<h1>HbnPost, a blog about Hibernate</h1>
@@ -73,11 +81,9 @@
 						<a href="/posts/${postItem.id}">${postItem.title}</a>
 					</h1>
 					<div>
-						<div class="pull-right" style="padding: 10px 0 0 5px;">${postItem.author.name}</div>
 						<img alt="User's avatar"
-							src="http://i.pravatar.cc/50?u=${postItem.author.email}"
-							class="img-circle img-responsive pull-right">
-						<p></p>
+						src="http://i.pravatar.cc/50?u=${postItem.author.email}"
+						class="img-circle img-responsive pull-right"> <span>${postItem.author.name}</span>
 					</div>
 					<div style="clear: both; margin-bottom: 10px;"></div>
 					<c:if test="${not empty postItem.url}">
@@ -98,7 +104,8 @@
 				</div>
 			</div>
 		</c:forEach>
-		<footer class="footer">&copy; 2019 - Jesús Ángel Pérez-Roca Fernández (jprf.liceo@gmail.com)</footer>
+		<footer class="footer">&copy; 2019 - Jesús Ángel Pérez-Roca
+			Fernández (jprf.liceo@gmail.com)</footer>
 	</div>
 	<!-- /container -->
 	<script src="webjars/jquery/3.4.0/jquery.min.js"></script>
