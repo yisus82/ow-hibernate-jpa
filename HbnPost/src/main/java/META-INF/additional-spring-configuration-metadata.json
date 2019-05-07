@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "db.url",
+    "type": "java.lang.String",
+    "description": "Database URL"
+  },
+  {
+    "name": "db.driver",
+    "type": "java.lang.String",
+    "description": "Database driver"
+  },
+  {
+    "name": "db.username",
+    "type": "java.lang.String",
+    "description": "Database username"
+  },
+  {
+    "name": "db.password",
+    "type": "java.lang.String",
+    "description": "Database password"
+  },
+  {
+    "name": "hibernate.dialect",
+    "type": "java.lang.String",
+    "description": "Hibernate dialect"
+  },
+  {
+    "name": "hibernate.show_sql",
+    "type": "java.lang.String",
+    "description": "Hibernate show_sql property"
+  },
+  {
+    "name": "hibernate.hbm2ddl.auto",
+    "type": "java.lang.String",
+    "description": "Hibernate hbm2ddl.auto property"
+  },
+  {
+    "name": "entitymanager.packagesToScan",
+    "type": "java.lang.String",
+    "description": "Packages to scan in EntityManager"
+  }
+]}
