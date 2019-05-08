@@ -63,14 +63,13 @@
 				<div>
 					<img alt="User's avatar"
 						src="http://i.pravatar.cc/50?u=${post.author.email}"
-						class="img-circle img-responsive pull-right"> <span>${post.author.name}</span>
+						class="rounded-circle img-fluid img-thumbnail"> <span>${post.author.name}</span>
 				</div>
-				<div style="clear: both; margin-bottom: 10px;"></div>
 				<p>${post.content}</p>
 				<div>
-					<span class="badge">Posted on <fmt:formatDate type="date"
-							value="${post.date}" /> at <fmt:formatDate type="time"
-							value="${post.date}" /></span>
+					<span class="badge badge-pill badge-primary">Posted on <fmt:formatDate
+							type="date" value="${post.date}" /> at <fmt:formatDate
+							type="time" value="${post.date}" /></span>
 				</div>
 				<hr>
 			</div>
@@ -103,18 +102,15 @@
 							<h5>You need to log in in order to comment on this article</h5>
 						</c:otherwise>
 					</c:choose>
-					<hr data-brackets-id="12673">
-					<ul data-brackets-id="12674" id="sortable"
-						class="list-unstyled ui-sortable">
+					<hr>
+					<ul>
 						<c:if test="${not empty post.comments}">
 							<c:forEach items="${post.comments}" var="comment">
-								<li class="ui-state-default"><strong
-									class="pull-left primary-font">${comment.user.name}</strong> <small
-									class="pull-right text-muted"> <span
-										class="glyphicon glyphicon-time"></span> <fmt:formatDate
+								<li><strong>${comment.user.name}</strong> <small
+									class="badge badge-pill badge-info"><fmt:formatDate
 											type="date" value="${comment.date}" /> at <fmt:formatDate
-											type="time" value="${comment.date}" />
-								</small> <br /> ${comment.text} <br /></li>
+											type="time" value="${comment.date}" /> </small> <br />
+									${comment.text} <br /></li>
 							</c:forEach>
 						</c:if>
 					</ul>

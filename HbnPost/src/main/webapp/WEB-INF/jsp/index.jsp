@@ -83,7 +83,7 @@
 					<div>
 						<img alt="User's avatar"
 						src="http://i.pravatar.cc/50?u=${postItem.author.email}"
-						class="img-circle img-responsive pull-right"> <span>${postItem.author.name}</span>
+						class="rounded-circle img-fluid img-thumbnail"> <span>${postItem.author.name}</span>
 					</div>
 					<div style="clear: both; margin-bottom: 10px;"></div>
 					<c:if test="${not empty postItem.url}">
@@ -95,9 +95,9 @@
 						<p>${postItem.content}</p>
 					</div>
 					<div>
-						<span class="badge">Posted on <fmt:formatDate type="date"
+						<span class="badge badge-pill badge-primary">Posted on <fmt:formatDate type="date"
 								value="${postItem.date}" /> at <fmt:formatDate type="time"
-								value="${postItem.date}" /></span> <span class="label label-info">${(fn:length(postItem.comments) gt 0) ? fn:length(postItem.comments) : 'No '}
+								value="${postItem.date}" /></span> <span class="badge badge-pill badge-info">${(fn:length(postItem.comments) gt 0) ? fn:length(postItem.comments) : 'No '}
 							${(fn:length(postItem.comments) == 1) ? 'comment' : 'comments'}</span>
 					</div>
 					<hr>
